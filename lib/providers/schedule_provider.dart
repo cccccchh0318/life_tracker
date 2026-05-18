@@ -44,7 +44,7 @@ class ScheduleProvider extends ChangeNotifier {
         '${date.month.toString().padLeft(2, '0')}-'
         '${date.day.toString().padLeft(2, '0')}';
     return _schedules
-        .where((s) => s.startTime.startsWith(prefix))
+        .where((s) => s.startTime.toIso8601String().startsWith(prefix))
         .toList()
       ..sort((a, b) => a.startTime.compareTo(b.startTime));
   }

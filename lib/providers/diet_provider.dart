@@ -44,13 +44,13 @@ class DietProvider extends ChangeNotifier {
   int getDailyCalories(DateTime date) {
     final prefix = _datePrefix(date);
     return _records
-        .where((r) => r.recordDate.startsWith(prefix))
+        .where((r) => r.recordDate.toIso8601String().startsWith(prefix))
         .fold(0, (sum, r) => sum + r.calories);
   }
 
   Map<String, double> getDailyMacros(DateTime date) {
     final prefix = _datePrefix(date);
-    final dayRecords = _records.where((r) => r.recordDate.startsWith(prefix));
+    final dayRecords = _records.where((r) => r.recordDate.toIso8601String().startsWith(prefix));
     double protein = 0;
     double carbs = 0;
     double fat = 0;
@@ -69,5 +69,14 @@ class DietProvider extends ChangeNotifier {
   void setSelectedDate(DateTime date) {
     _selectedDate = date;
     notifyListeners();
+  }
+
+  List<DietRecord> getRecordsForDate(DateTime date) {
+    return _records
+        .where((r) =>
+            r.recordDate.year == date.year &&
+            r.recordDate.month == date.month &&
+            r.recordDate.day == date.day)
+        .toList();
   }
 }

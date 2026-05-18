@@ -49,7 +49,7 @@ class FitnessProvider extends ChangeNotifier {
       final day = today.subtract(Duration(days: 6 - i));
       final prefix = _datePrefix(day);
       return _records
-          .where((r) => r.recordDate.startsWith(prefix))
+          .where((r) => r.recordDate.toIso8601String().startsWith(prefix))
           .fold(0, (sum, r) => sum + r.calories);
     });
   }
@@ -57,5 +57,14 @@ class FitnessProvider extends ChangeNotifier {
   void setSelectedDate(DateTime date) {
     _selectedDate = date;
     notifyListeners();
+  }
+
+  List<FitnessRecord> getRecordsForDate(DateTime date) {
+    return _records
+        .where((r) =>
+            r.recordDate.year == date.year &&
+            r.recordDate.month == date.month &&
+            r.recordDate.day == date.day)
+        .toList();
   }
 }

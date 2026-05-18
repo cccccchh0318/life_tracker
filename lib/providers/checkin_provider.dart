@@ -63,7 +63,7 @@ class CheckinProvider extends ChangeNotifier {
     final record = CheckinRecord(
       id: _uuid.v4(),
       habitId: habitId,
-      date: dateStr,
+      date: DateTime.parse(dateStr),
       note: note,
     );
 
@@ -79,7 +79,7 @@ class CheckinProvider extends ChangeNotifier {
         '${date.day.toString().padLeft(2, '0')}';
 
     final records = _recordsByHabit[habitId] ?? [];
-    return records.any((r) => r.date.startsWith(dateStr));
+    return records.any((r) => r.date.toIso8601String().startsWith(dateStr));
   }
 
   /// Returns the current consecutive-day streak for a habit.
@@ -90,16 +90,7 @@ class CheckinProvider extends ChangeNotifier {
 
     // Collect unique check-in dates as DateTime (date-only)
     final dates = records
-        .map((r) {
-          final parts = r.date.split('-');
-          if (parts.length < 3) return null;
-          return DateTime(
-            int.parse(parts[0]),
-            int.parse(parts[1]),
-            int.parse(parts[2]),
-          );
-        })
-        .whereType<DateTime>()
+        .map((r) => DateTime(r.date.year, r.date.month, r.date.day))
         .toSet()
         .toList()
       ..sort((a, b) => b.compareTo(a)); // descending
