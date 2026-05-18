@@ -134,7 +134,7 @@ class TaskScreen extends StatelessWidget {
               TextField(controller: descCtrl, decoration: const InputDecoration(labelText: '备注（可选）', border: OutlineInputBorder()), maxLines: 2),
               const SizedBox(height: 12),
               DropdownButtonFormField<int>(
-                value: priority,
+                initialValue: priority,
                 decoration: const InputDecoration(labelText: '优先级', border: OutlineInputBorder()),
                 items: const [
                   DropdownMenuItem(value: 0, child: Text('低')),
@@ -201,7 +201,7 @@ class _PriorityBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
       decoration: BoxDecoration(
-        color: colors[priority].withOpacity(0.15),
+        color: colors[priority].withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(labels[priority], style: TextStyle(color: colors[priority], fontSize: 12, fontWeight: FontWeight.w600)),

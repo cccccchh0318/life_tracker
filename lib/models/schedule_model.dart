@@ -21,7 +21,7 @@ class Schedule {
     int? color,
     DateTime? createdAt,
   })  : id = id ?? const Uuid().v4(),
-        color = color ?? Colors.deepPurple.value,
+        color = color ?? Colors.deepPurple.toARGB32(),
         createdAt = createdAt ?? DateTime.now();
 
   Schedule copyWith({
