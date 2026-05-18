@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       '${_now.year}年${_now.month}月${_now.day}日  $_weekdayStr',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.white.withValues(alpha: 0.85),
+                        color: Colors.white.withOpacity(0.85),
                       ),
                     ),
                   ],
@@ -185,7 +185,7 @@ class _StatCard extends StatelessWidget {
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      color: color.withValues(alpha: 0.1),
+      color: color.withOpacity(0.1),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -203,7 +203,7 @@ class _StatCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(value, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: color)),
-                Text(subtitle, style: TextStyle(fontSize: 11, color: color.withValues(alpha: 0.7))),
+                Text(subtitle, style: TextStyle(fontSize: 11, color: color.withOpacity(0.7))),
               ],
             ),
           ],

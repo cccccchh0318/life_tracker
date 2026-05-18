@@ -99,7 +99,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
                                       toY: weekly.length > i ? weekly[i].toDouble() : 0,
                                       color: isToday
                                           ? Theme.of(context).colorScheme.primary
-                                          : Theme.of(context).colorScheme.primary.withValues(alpha: 0.35),
+                                          : Theme.of(context).colorScheme.primary.withOpacity(0.35),
                                       width: 18,
                                       borderRadius: BorderRadius.circular(4),
                                     ),
@@ -137,7 +137,7 @@ class _FitnessScreenState extends State<FitnessScreen> {
                         leading: Container(
                           width: 44, height: 44,
                           decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+                            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Icon(Icons.fitness_center, color: Theme.of(context).colorScheme.primary, size: 22),

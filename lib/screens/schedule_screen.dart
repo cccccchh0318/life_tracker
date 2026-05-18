@@ -199,7 +199,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                       color: Color(c),
                       shape: BoxShape.circle,
                       border: selectedColor == c ? Border.all(color: Colors.white, width: 3) : null,
-                      boxShadow: selectedColor == c ? [BoxShadow(color: Color(c).withValues(alpha: 0.5), blurRadius: 6)] : null,
+                      boxShadow: selectedColor == c ? [BoxShadow(color: Color(c).withOpacity(0.5), blurRadius: 6)] : null,
                     ),
                   ),
                 )).toList(),

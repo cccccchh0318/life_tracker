@@ -62,11 +62,11 @@ class _CheckinScreenState extends State<CheckinScreen> {
                   duration: const Duration(milliseconds: 300),
                   decoration: BoxDecoration(
                     color: checked
-                        ? Color(habit.color).withValues(alpha: 0.85)
-                        : Color(habit.color).withValues(alpha: 0.12),
+                        ? Color(habit.color).withOpacity(0.85)
+                        : Color(habit.color).withOpacity(0.12),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Color(habit.color).withValues(alpha: checked ? 0 : 0.3),
+                      color: Color(habit.color).withOpacity(checked ? 0 : 0.3),
                     ),
                   ),
                   padding: const EdgeInsets.all(16),
@@ -174,8 +174,8 @@ class _CheckinScreenState extends State<CheckinScreen> {
                     width: 44, height: 44,
                     decoration: BoxDecoration(
                       color: selectedEmoji == e
-                          ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.15)
-                          : Colors.grey.withValues(alpha: 0.1),
+                          ? Theme.of(context).colorScheme.primary.withOpacity(0.15)
+                          : Colors.grey.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(10),
                       border: selectedEmoji == e
                           ? Border.all(color: Theme.of(context).colorScheme.primary)
@@ -199,7 +199,7 @@ class _CheckinScreenState extends State<CheckinScreen> {
                       shape: BoxShape.circle,
                       border: selectedColor == c ? Border.all(color: Colors.white, width: 3) : null,
                       boxShadow: selectedColor == c
-                          ? [BoxShadow(color: Color(c).withValues(alpha: 0.5), blurRadius: 6)]
+                          ? [BoxShadow(color: Color(c).withOpacity(0.5), blurRadius: 6)]
                           : null,
                     ),
                   ),

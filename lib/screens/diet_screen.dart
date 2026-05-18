@@ -171,7 +171,7 @@ class _DietScreenState extends State<DietScreen> {
               const Text('添加饮食记录', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               const SizedBox(height: 16),
               DropdownButtonFormField<String>(
-                initialValue: mealType,
+                value: mealType,
                 decoration: const InputDecoration(labelText: '餐食类型', border: OutlineInputBorder()),
                 items: const [
                   DropdownMenuItem(value: 'breakfast', child: Text('早餐')),
